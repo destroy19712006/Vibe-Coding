@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://cnwwt0jm07ekd"]
+
+[ext_resource type="Script" uid="uid://cioqsaesmexch" path="res://scenes/main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/jugador.tscn" id="2_jugador"]
+[ext_resource type="Script" uid="uid://c2uu3qx2dac11" path="res://scripts/spawner_pluja.gd" id="3_spawner"]
+[ext_resource type="Texture2D" uid="uid://d0l4g1trrr1l1" path="res://assets/Fondo_lluvia.png" id="4_fondo_tex"]
+
+[node name="Main" type="Node2D" unique_id=1388902176]
+script = ExtResource("1_main")
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=431990771]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -217.0
+offset_right = 1226.0
+offset_bottom = 647.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fondo_tex")
+stretch_mode = 1
+
+[node name="Jugador" parent="." unique_id=945388922 instance=ExtResource("2_jugador")]
+
+[node name="SpawnerPluja" type="Node2D" parent="." unique_id=2116438787]
+script = ExtResource("3_spawner")
+
+[node name="Timer" type="Timer" parent="SpawnerPluja" unique_id=579107803]
+wait_time = 0.8
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=249366134]
+
+[node name="LabelPunts" type="Label" parent="HUD" unique_id=230967050]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+text = "Temps: 0 s"
+
+[node name="LabelRecord" type="Label" parent="HUD" unique_id=5869575]
+offset_left = 16.0
+offset_top = 54.0
+offset_right = 320.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(1, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+text = "Rec: 0 s"
+
+[node name="PanellGameOver" type="Control" parent="HUD" unique_id=213840723]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fons" type="ColorRect" parent="HUD/PanellGameOver" unique_id=1493495569]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78)
+
+[node name="VBox" type="VBoxContainer" parent="HUD/PanellGameOver" unique_id=564764143]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="LabelGameOver" type="Label" parent="HUD/PanellGameOver/VBox" unique_id=270131467]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.25, 0.2, 1)
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="LabelFinal" type="Label" parent="HUD/PanellGameOver/VBox" unique_id=1335088769]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "Temps: 0 s"
+horizontal_alignment = 1
+
+[node name="LabelRecordFinal" type="Label" parent="HUD/PanellGameOver/VBox" unique_id=1362282821]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 22
+text = "Rec: 0 s"
+horizontal_alignment = 1
+
+[node name="BotoReiniciar" type="Button" parent="HUD/PanellGameOver/VBox" unique_id=993409526]
+custom_minimum_size = Vector2(260, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Tornar a jugar"
+
+[connection signal="timeout" from="SpawnerPluja/Timer" to="SpawnerPluja" method="_on_timer_timeout"]

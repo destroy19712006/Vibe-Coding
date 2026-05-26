@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/jugador.gd" id="1_jugador"]
+[ext_resource type="Texture2D" path="res://assets/player.png" id="2_player_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(80, 80)
+
+[node name="Jugador" type="CharacterBody2D"]
+z_index = 2
+script = ExtResource("1_jugador")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_player_tex")
+scale = Vector2(0.065, 0.065)
