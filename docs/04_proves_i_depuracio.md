@@ -102,6 +102,6 @@ Les seguents situacions van ser provades manualment:
 | Gota surt per sota de la pantalla | La gota s'elimina (`queue_free`) | Correcte |
 | Jugador arriba al limit esquerre | El jugador es queda al limit | Correcte |
 | Jugador arriba al limit dret | El jugador es queda al limit | Correcte |
-| Premsar "Tornar a jugar" | Les gotes s'eliminen i el joc reinicia | Correcte |
+| Premsar "Tornar a jugar" | Les gotes s'eliminen i el joc reinicia | Incorrecte |
 | La puntuacio supera el record | El record s'actualitza | Correcte |
 | La dificultat augmenta amb el temps | La frequencia i velocitat augmenten | Correcte |
